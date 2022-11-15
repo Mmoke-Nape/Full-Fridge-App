@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:full_fridge_app/screens/home/home_screen.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -62,10 +63,20 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             scaffoldBackgroundColor: AppColors.backgroundPageColor,
             primaryColor: AppColors.accentColor,
+            accentColor: AppColors.accentColor,
             textTheme: TextTheme(
-              headline1:
-                  GoogleFonts.roboto().copyWith(fontWeight: FontWeight.bold),
-              bodyText2: GoogleFonts.roboto().copyWith(fontSize: 16),
+              headline1: GoogleFonts.roboto().copyWith(
+                fontWeight: FontWeight.bold,
+                color: AppColors.accentColor,
+              ),
+              bodyText2: GoogleFonts.roboto().copyWith(
+                color: AppColors.accentColor,
+              ),
+              bodyText1: GoogleFonts.roboto().copyWith(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: AppColors.accentColor,
+              ),
             ),
           ),
           darkTheme: ThemeData.dark(),
@@ -74,22 +85,23 @@ class MyApp extends StatelessWidget {
 
           // Define a function to handle named routes in order to support
           // Flutter web url navigation and deep linking.
-          onGenerateRoute: (RouteSettings routeSettings) {
-            return MaterialPageRoute<void>(
-              settings: routeSettings,
-              builder: (BuildContext context) {
-                switch (routeSettings.name) {
-                  case SettingsView.routeName:
-                    return SettingsView(controller: settingsController);
-                  case SampleItemDetailsView.routeName:
-                    return const SampleItemDetailsView();
-                  case SampleItemListView.routeName:
-                  default:
-                    return const SampleItemListView();
-                }
-              },
-            );
-          },
+          // onGenerateRoute: (RouteSettings routeSettings) {
+          //   return MaterialPageRoute<void>(
+          //     settings: routeSettings,
+          //     builder: (BuildContext context) {
+          //       switch (routeSettings.name) {
+          //         case SettingsView.routeName:
+          //           return SettingsView(controller: settingsController);
+          //         case SampleItemDetailsView.routeName:
+          //           return const SampleItemDetailsView();
+          //         case SampleItemListView.routeName:
+          //         default:
+          //           return const SampleItemListView();
+          //       }
+          //     },
+          //   );
+          // },
+          home: const HomeScreen(),
         );
       },
     );
