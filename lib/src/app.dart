@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:full_fridge_app/screens/home/home_screen.dart';
+import 'package:full_fridge_app/screens/filter%20screen/filter_screen.dart';
+import 'package:full_fridge_app/screens/Home/home_screen.dart';
+import 'package:full_fridge_app/screens/main_screen.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../constants/app_colors.dart';
+import '../constants/app_routes.dart';
 import 'sample_feature/sample_item_details_view.dart';
 import 'sample_feature/sample_item_list_view.dart';
 import 'settings/settings_controller.dart';
@@ -76,6 +79,7 @@ class MyApp extends StatelessWidget {
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
                 color: AppColors.accentColor,
+                letterSpacing: 0.6,
               ),
             ),
           ),
@@ -101,7 +105,22 @@ class MyApp extends StatelessWidget {
           //     },
           //   );
           // },
-          home: const HomeScreen(),
+          // home: const FilterScreen(),
+          // home: const HomeScreen(),
+          home: const MainScreen(),
+          getPages: [
+            //Authentication routes
+            GetPage(
+              name: AppRoutes.homeRoute,
+              page: () => const HomeScreen(),
+              title: 'Home Page',
+            ),
+            GetPage(
+              name: AppRoutes.filterRoute,
+              page: () => const FilterScreen(),
+              title: 'Filter',
+            ),
+          ],
         );
       },
     );

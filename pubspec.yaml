@@ -10,15 +10,20 @@ environment:
   sdk: ">=2.18.2 <3.0.0"
 
 dependencies:
+  curved_navigation_bar: ^1.0.3
+  custom_navigation_bar: ^0.8.2
   email_validator: ^2.1.17
+  eva_icons_flutter: ^3.1.0
   firebase_auth: ^4.1.2
   firebase_core: ^2.2.0
+  floating_bottom_navigation_bar: ^1.5.2
   flutter:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
   get: ^4.6.5
   google_fonts: ^3.0.1
+  lottie: ^2.0.0
   websafe_svg: ^2.1.2+7
 
 dev_dependencies:

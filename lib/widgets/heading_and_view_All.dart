@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 
 import '../constants/app_colors.dart';
 
-class HeadingAndViewAll extends StatelessWidget {
-  const HeadingAndViewAll({
+class HeadingAndSideText extends StatelessWidget {
+  const HeadingAndSideText({
     Key? key,
     required this.heading,
     required this.press,
+    required this.sideText,
   }) : super(key: key);
   final String heading;
+  final String sideText;
   final Function() press;
   @override
   Widget build(BuildContext context) {
@@ -24,9 +26,10 @@ class HeadingAndViewAll extends StatelessWidget {
           ),
           GestureDetector(
             onTap: press,
-            child: const Text(
-              'View all',
-              style: TextStyle(color: AppColors.activeColor, fontSize: 14),
+            child: Text(
+              sideText,
+              style:
+                  const TextStyle(color: AppColors.activeColor, fontSize: 14),
             ),
           ),
         ],
