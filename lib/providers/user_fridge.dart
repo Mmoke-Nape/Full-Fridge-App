@@ -40,4 +40,20 @@ final fridge_ingredients = [
         'https://media.nedigital.sg/fairprice/fpol/media/images/product/XL/90144355_XL1_20220824.jpg',
     quanity: '4',
   ),
+  Fridge(
+    id: '3',
+    title: 'Cherry Tomatoes',
+    date: '06/02/2002',
+    image:
+        'https://media.nedigital.sg/fairprice/fpol/media/images/product/XL/90144355_XL1_20220824.jpg',
+    quanity: '4',
+  ),
+  Fridge(
+    id: '3',
+    title: 'Cherry Tomatoes',
+    date: '06/02/2002',
+    image:
+        'https://media.nedigital.sg/fairprice/fpol/media/images/product/XL/90144355_XL1_20220824.jpg',
+    quanity: '4',
+  ),
 ];

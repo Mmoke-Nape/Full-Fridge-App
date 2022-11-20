@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 import '../constants/app_colors.dart';
 
-class RecommendedForYouDisplay extends StatelessWidget {
+class RecommendedForYouDisplay extends StatefulWidget {
   const RecommendedForYouDisplay({
     Key? key,
     required this.title,
@@ -15,6 +16,32 @@ class RecommendedForYouDisplay extends StatelessWidget {
   final String difficulty;
   final String time;
   final String chefName;
+
+  @override
+  State<RecommendedForYouDisplay> createState() =>
+      _RecommendedForYouDisplayState();
+}
+
+class _RecommendedForYouDisplayState extends State<RecommendedForYouDisplay>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _bookmarkController;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _bookmarkController =
+        AnimationController(vsync: this, duration: const Duration(seconds: 2));
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _bookmarkController.dispose();
+  }
+
+  bool bookmarked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -35,42 +62,53 @@ class RecommendedForYouDisplay extends StatelessWidget {
                   image: AssetImage('assets/images/food/Pumpkin-Soup-Bowl.png'),
                   fit: BoxFit.cover),
             ),
-            child: Stack(
-              fit: StackFit.expand,
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Column(
-                  mainAxisSize: MainAxisSize.max,
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  // mainAxisSize: MainAxisSize.max,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        SizedBox(width: 10),
-                        Icon(Icons.bookmark_outline, color: Colors.white)
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          '$time min',
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          difficulty,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            // fontSize: 11,
-                          ),
-                        ),
-                      ],
+                    const SizedBox(width: 10),
+                    GestureDetector(
+                      onTap: () {
+                        if (bookmarked == false) {
+                          bookmarked = true;
+                          _bookmarkController.forward();
+                        } else {
+                          bookmarked = false;
+                          _bookmarkController.reverse();
+                        }
+                      },
+                      child: Lottie.asset('assets/animations/bfinal.json',
+                          height: 40,
+                          width: 40,
+                          fit: BoxFit.fitHeight,
+                          controller: _bookmarkController),
                     ),
                   ],
-                )
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      '${widget.time} min',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      widget.difficulty,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        // fontSize: 11,
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
@@ -80,11 +118,12 @@ class RecommendedForYouDisplay extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
+              Text(widget.title,
+                  style: const TextStyle(fontWeight: FontWeight.bold)),
               GestureDetector(
                 onTap: () {},
                 child: Text(
-                  chefName,
+                  widget.chefName,
                   style: const TextStyle(
                       color: AppColors.activeColor, fontSize: 11),
                 ),

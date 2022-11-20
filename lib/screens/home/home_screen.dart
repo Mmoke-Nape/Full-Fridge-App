@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 
 import '../../constants/app_colors.dart';
+import '../../constants/constants.dart';
 import '../../widgets/category_home_pill.dart';
 import '../../widgets/custom_food_listtile.dart';
 import '../../widgets/heading_and_view_All.dart';
@@ -13,13 +14,6 @@ import '../../widgets/searchbox_with_button.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
-  static const categoryList = [
-    'Breakfast',
-    'Brunch',
-    'Lunch',
-    'Snack',
-    'Dinner'
-  ];
   @override
   Widget build(BuildContext context) {
     final node = FocusNode();
@@ -41,14 +35,14 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     const SizedBox(width: 20),
                     Padding(
-                      padding: EdgeInsets.only(left: 40),
+                      padding: const EdgeInsets.only(left: 40),
                       child: Text(
                         'Recipes',
                         style: Theme.of(context).textTheme.bodyText1!.copyWith(
                             fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                     ),
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(right: 20),
                       child: CircleAvatar(
                         foregroundImage: AssetImage('assets/images/joji.jpg'),
@@ -82,15 +76,15 @@ class HomeScreen extends StatelessWidget {
                 height: 40,
                 child: ListView.builder(
                   shrinkWrap: true,
-                  itemCount: categoryList.length,
+                  itemCount: category_List.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: ((context, index) {
                     return Padding(
                       padding: EdgeInsets.only(
                           left: index == 0 ? 20 : 5,
-                          right: index == categoryList.length - 1 ? 10 : 0),
+                          right: index == category_List.length - 1 ? 10 : 0),
                       child: CategoryHomePill(
-                        text: categoryList[index],
+                        text: category_List[index],
                         color: AppColors.activeColor,
                       ),
                     );

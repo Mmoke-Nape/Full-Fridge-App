@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:full_fridge_app/providers/user_fridge.dart';
 import 'package:full_fridge_app/screens/Fridge/widgets/add_ingredients_widget.dart';
-import 'package:get/get.dart';
+import 'package:full_fridge_app/screens/Fridge/widgets/fridge_widget_tab.dart';
 
 import '../../constants/app_colors.dart';
-import '../../constants/app_routes.dart';
-import '../../constants/constants.dart';
-import '../../widgets/category_home_pill.dart';
 import '../../widgets/searchbox_with_button.dart';
 
 class FridgeScreen extends StatefulWidget {
@@ -108,8 +106,8 @@ class _FridgeScreenState extends State<FridgeScreen> {
                   ),
                   child: Row(
                     children: [
-                      difficultyTab('Fridge', 0),
-                      difficultyTab('Add ingredients', 1),
+                      difficultyTab('Add ingredients', 0),
+                      difficultyTab('Fridge', 1),
                     ],
                   ),
                 ),
@@ -127,12 +125,7 @@ class _FridgeScreenState extends State<FridgeScreen> {
                 duration: const Duration(milliseconds: 400),
                 child: complexityIndex == 0
                     ? const AddIngredientsWidget()
-                    : Column(
-                        children: [
-                          // List
-                          const SizedBox(height: 30),
-                        ],
-                      ),
+                    : const FridgeWidgetTab(),
               ),
             ],
           ),

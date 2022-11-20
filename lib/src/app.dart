@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:full_fridge_app/screens/Add%20Recipe/add_recipe_screen.dart';
+import 'package:full_fridge_app/screens/Recipe/recipe_screen.dart';
 import 'package:full_fridge_app/screens/filter%20screen/filter_screen.dart';
 import 'package:full_fridge_app/screens/Home/home_screen.dart';
 import 'package:full_fridge_app/screens/main_screen.dart';
@@ -72,9 +74,8 @@ class MyApp extends StatelessWidget {
                 fontWeight: FontWeight.bold,
                 color: AppColors.accentColor,
               ),
-              bodyText2: GoogleFonts.roboto().copyWith(
-                color: AppColors.accentColor,
-              ),
+              bodyText2: GoogleFonts.roboto()
+                  .copyWith(color: AppColors.accentColor, letterSpacing: 1),
               bodyText1: GoogleFonts.roboto().copyWith(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -119,6 +120,16 @@ class MyApp extends StatelessWidget {
               name: AppRoutes.filterRoute,
               page: () => const FilterScreen(),
               title: 'Filter',
+            ),
+            GetPage(
+              name: AppRoutes.recipeRoute,
+              page: () => const RecipeScreen(),
+              title: 'Recipe',
+            ),
+            GetPage(
+              name: AppRoutes.addRecipeRoute,
+              page: () => const AddRecipeScreen(),
+              title: 'Add Recipe',
             ),
           ],
         );

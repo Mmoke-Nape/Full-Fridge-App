@@ -44,3 +44,5 @@ final categoryList = [
       title: 'Nuts',
       image: 'https://www.pngarts.com/files/4/Nut-PNG-Photo.png'),
 ];
+
+const category_List = ['Breakfast', 'Brunch', 'Lunch', 'Snack', 'Dinner'];
